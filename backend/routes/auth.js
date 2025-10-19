@@ -42,7 +42,7 @@ authRouter.post('/login', async (req, res) => {
 })
 
 
-router.post('/register', async (req, res) => {
+authRouter.post('/register', async (req, res) => {
     try {
         const { username, password, role } = req.body;
 
