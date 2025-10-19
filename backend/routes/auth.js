@@ -6,7 +6,7 @@ import { generateToken } from '../middleware/auth.js';
 
 const authRouter = express.Router();
 
-authRouter.post('/login', async (req, res) => { 
+authRouter.post('/login', async (req, res) => {
     try {
         const { username, password } = req.body;
         if (!username || !password) {
@@ -38,7 +38,7 @@ authRouter.post('/login', async (req, res) => {
     } catch (error) {
         console.error('login error:', error);
         res.status(500).json({ error: 'server error' });
-      }
+    }
 
 })
 
@@ -60,7 +60,7 @@ authRouter.post('/register', async (req, res) => {
             return res.status(409).json({ error: 'Username already exists' });
         }
 
-                const saltRounds = 10;
+        const saltRounds = 10;
         const passwordHash = await bcrypt.hash(password, saltRounds);
 
         const result = await query(

@@ -3,3 +3,14 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+.main-container{
+  background-image: url("https://storage.123fakturera.se/public/wallpapers/sverige43.jpg");
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  min-height: 100vh;
+  height: 100%;
+
+}

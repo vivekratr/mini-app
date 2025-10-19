@@ -1,25 +1,21 @@
-import {  useEffect } from 'react'
-import { BrowserRouter, Routes, Route, Navigate, NavLink } from 'react-router-dom';
-
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css'
+import Navbar from './components/Navbar';
+import Layout from './components/Layout';
+import Login from './pages/Login';
 
 function App() {
 
   return (
-    <>
-      <BrowserRouter>
+    <BrowserRouter>
+      <div className="main-container">
         <Layout>
           <Routes>
             <Route path="/" element={<Login />} />
-
-        
-     
-
-          
           </Routes>
         </Layout>
-      </BrowserRouter>
-    </>
+      </div>
+    </BrowserRouter>
   )
 }
 
