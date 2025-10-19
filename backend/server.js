@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import authRouter from './routes/auth.js';
 import contentRouter from './routes/content.js';
+import productRouter from './routes/product.js';
 dotenv.config();
 
 const app = express();
@@ -19,6 +20,7 @@ app.get('/api/status', (req, res) => {
 
 app.use('/api/auth', authRouter);
 app.use('/api/content', contentRouter);
+app.use('/api/products',productRouter)
 
  
 app.listen((PORT), () => {
