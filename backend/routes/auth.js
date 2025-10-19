@@ -1,6 +1,7 @@
 import express from "express";
 import bcrypt from 'bcrypt';
 import { query } from '../config/database.js';
+import { generateToken } from '../middleware/auth.js';
 
 
 const authRouter = express.Router();

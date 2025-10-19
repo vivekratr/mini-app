@@ -14,7 +14,7 @@ const generateToken = (user) => {
     );
 };
   
-exports = {
+export {
     generateToken,
     JWT_SECRET
   };

@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import authRouter from './routes/auth.js';
-
+import contentRouter from './routes/content.js';
 dotenv.config();
 
 const app = express();
@@ -18,8 +18,10 @@ app.get('/api/status', (req, res) => {
 });
 
 app.use('/api/auth', authRouter);
+app.use('/api/content', contentRouter);
 
-
+ 
 app.listen((PORT), () => {
     console.log(`Server is running on port ${PORT}`);
 });
+
