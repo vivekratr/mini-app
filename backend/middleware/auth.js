@@ -38,5 +38,6 @@ const authenticateToken = (req, res, next) => {
   
 export {
     generateToken,
-    JWT_SECRET
+    JWT_SECRET,
+    authenticateToken
   };

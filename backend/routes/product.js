@@ -1,6 +1,6 @@
 import express from "express"
-import { query } from "../config/database"
-import {authenticateToken} from "../middleware/auth"
+import { query } from "../config/database.js"
+import {authenticateToken} from "../middleware/auth.js"
 
 const productRouter = express.Router()
 
