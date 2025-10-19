@@ -1,10 +1,11 @@
 import express from "express";
 import bcrypt from 'bcrypt';
-const { query } = require('../config/database');
+import { query } from '../config/database.js';
 
-const router = express.Router();
 
-router.post('/login', async (req, res) => { 
+const authRouter = express.Router();
+
+authRouter.post('/login', async (req, res) => { 
     try {
         const { username, password } = req.body;
         if (!username || !password) {
@@ -41,4 +42,4 @@ router.post('/login', async (req, res) => {
 })
 
 
-module.exports = router;
+export default authRouter;

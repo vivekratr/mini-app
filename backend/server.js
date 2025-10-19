@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import {authRoutes} from './routes/authRoutes.js';
+import authRouter from './routes/auth.js';
 
 dotenv.config();
 
@@ -17,7 +17,7 @@ app.get('/api/status', (req, res) => {
     res.json({ status: 'OK', timestamp: new Date().toISOString() });
 });
 
-app.use('/api/auth', authRoutes);
+app.use('/api/auth', authRouter);
 
 
 app.listen((PORT), () => {
