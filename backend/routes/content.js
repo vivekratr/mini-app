@@ -8,7 +8,9 @@ contentRouter.get('/:page', async (req, res) => {
         const { page } = req.params;
         const language = req.query.language || 'en';
 
-        const validPages = ['login', 'terms'];
+        res.setHeader('Content-Type', 'application/json; charset=utf-8');
+
+        const validPages = ['login', 'terms','navbar'];
         if (!validPages.includes(page)) {
             return res.status(400).json({ error: 'Invalid page requested' });
         }
