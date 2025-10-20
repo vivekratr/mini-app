@@ -51,58 +51,52 @@ const Navbar = () => {
     };
 
     return (
-        <nav className='navbar-container'>
-            <div className="navbar-left">
-                <img style={{ width: "56px", height: "auto", objectFit: 'cover' }} src="https://storage.123fakturera.se/public/icons/diamond.png" alt="Logo" />
-            </div>
+        <>
+            <nav className='navbar-container'>
+                <div className="navbar-left">
+                    <button
+                        className="navbar-mobile-toggle-desktop"
+                        onClick={toggleMobileMenu}
+                        aria-label="Toggle menu"
+                    >
+                        <div className={`navbar-hamburger ${mobileMenuOpen ? 'navbar-hamburger-active' : ''}`}>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </button>
+                    <img className="navbar-logo-desktop" style={{ width: "56px", height: "auto", objectFit: 'cover' }} src="https://storage.123fakturera.se/public/icons/diamond.png" alt="Logo" />
+                </div>
 
-            <div className="navbar-right-controls">
-                <button
-                    className="navbar-mobile-toggle"
-                    onClick={toggleMobileMenu}
-                    aria-label="Toggle menu"
-                >
-                    <div className={`navbar-hamburger ${mobileMenuOpen ? 'navbar-hamburger-active' : ''}`}>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                </button>
-
-                <div className={`navbar-right ${mobileMenuOpen ? 'navbar-right-active' : ''}`}>
+                <div className="navbar-right">
                     <div className="navbar-links">
                         <NavLink
                             to="/"
                             className="white-text"
-                            onClick={closeMobileMenu}
                         >
                             <p>{content?.navbar?.home || 'Home'}</p>
                         </NavLink>
                         <NavLink
                             to="/"
                             className="white-text"
-                            onClick={closeMobileMenu}
                         >
                             {content?.navbar?.order || 'Order'}
                         </NavLink>
                         <NavLink
                             to="/"
                             className="white-text"
-                            onClick={closeMobileMenu}
                         >
                             {content?.navbar?.["our-customers"] || 'Our Customers'}
                         </NavLink>
                         <NavLink
                             to="/"
                             className="white-text"
-                            onClick={closeMobileMenu}
                         >
                             {content?.navbar?.['about-us'] || 'About us'}
                         </NavLink>
                         <NavLink
                             to="/term"
                             className="white-text"
-                            onClick={closeMobileMenu}
                         >
                             {content?.navbar?.terms || 'Terms'}
                         </NavLink>
@@ -135,10 +129,7 @@ const Navbar = () => {
                             <MenuItem>
                                 {({ focus }) => (
                                     <div
-                                        onClick={() => {
-                                            setLanguage('en');
-                                            closeMobileMenu();
-                                        }}
+                                        onClick={() => setLanguage('en')}
                                         style={{
                                             ...styles.menuItem,
                                             ...(focus ? styles.menuItemFocus : {}),
@@ -156,10 +147,7 @@ const Navbar = () => {
                             <MenuItem>
                                 {({ focus }) => (
                                     <div
-                                        onClick={() => {
-                                            setLanguage('sv');
-                                            closeMobileMenu();
-                                        }}
+                                        onClick={() => setLanguage('sv')}
                                         style={{
                                             ...styles.menuItem,
                                             ...(focus ? styles.menuItemFocus : {}),
@@ -177,8 +165,49 @@ const Navbar = () => {
                         </MenuItems>
                     </Menu>
                 </div>
+            </nav>
+
+            {/* Mobile Menu Dropdown */}
+            <div className={`navbar-mobile-dropdown ${mobileMenuOpen ? 'navbar-mobile-dropdown-active' : ''}`}>
+                <div className="navbar-mobile-links">
+                    <NavLink
+                        to="/"
+                        className="navbar-mobile-link"
+                        onClick={closeMobileMenu}
+                    >
+                        {content?.navbar?.home || 'Hem'}
+                    </NavLink>
+                    <NavLink
+                        to="/"
+                        className="navbar-mobile-link"
+                        onClick={closeMobileMenu}
+                    >
+                        {content?.navbar?.order || 'Beställ'}
+                    </NavLink>
+                    <NavLink
+                        to="/"
+                        className="navbar-mobile-link"
+                        onClick={closeMobileMenu}
+                    >
+                        {content?.navbar?.["our-customers"] || 'Våra Kunder'}
+                    </NavLink>
+                    <NavLink
+                        to="/"
+                        className="navbar-mobile-link"
+                        onClick={closeMobileMenu}
+                    >
+                        {content?.navbar?.['about-us'] || 'Om oss'}
+                    </NavLink>
+                    <NavLink
+                        to="/term"
+                        className="navbar-mobile-link"
+                        onClick={closeMobileMenu}
+                    >
+                        {content?.navbar?.terms || 'Terms'}
+                    </NavLink>
+                </div>
             </div>
-        </nav>
+        </>
     )
 }
 

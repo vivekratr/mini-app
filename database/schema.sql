@@ -37,13 +37,27 @@ INSERT INTO content (page, language, text)
 VALUES (
         'login',
         'en',
-        '{"title": "Login", "username": "Username", "password": "Password", "submit": "Sign In", "welcome": "Welcome to 123Fakturera"}'
+        '{"title": "Login", "username": "Enter your email address", "password": "Enter your password", "submit": "Log in", "register": "Register","forget":"Forget password?"}'
     ),
     (
         'login',
         'sv',
-        '{"title": "Logga in", "username": "Användarnamn", "password": "Lösenord", "submit": "Logga in", "welcome": "Välkommen till 123Fakturera"}'
+        '{"title": "Logga in", "username": "Skriv in din epost adress", "password": "Skriv in ditt lösenord", "submit": "Logga in", "register": "Registrera dig", "forget":"Glömt lösenord?"}'
     );
+
+    -- insert multilingual content for login page
+INSERT INTO content (page, language, text)
+VALUES (
+        'footer',
+        'en',
+        '{"home": "Home", "order": "Order", "contact": "Contact Us"}'
+    ),
+    (
+        'footer',
+        'sv',
+        '{"home": "Hem", "order": "Beställ", "contact": "Kontakta oss"}'
+    );
+-- insert multilingual content for navbar
 INSERT INTO content (page, language, text)
 VALUES (
         'navbar',
