@@ -45,7 +45,7 @@ VALUES (
         '{"title": "Logga in", "username": "Skriv in din epost adress", "password": "Skriv in ditt lösenord", "submit": "Logga in", "register": "Registrera dig", "forget":"Glömt lösenord?"}'
     );
 
-    -- insert multilingual content for login page
+    -- insert multilingual content for footer page
 INSERT INTO content (page, language, text)
 VALUES (
         'footer',

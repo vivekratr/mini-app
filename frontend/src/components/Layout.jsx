@@ -1,7 +1,13 @@
 import Navbar from "./Navbar";
 import "../styles/Layout.css"
+import { useContentStore } from "../stores/contentStore";
+import { useEffect } from "react";
 
 export default function Layout({ children }) {
+          const { language, fetchContent, content } = useContentStore();
+    useEffect(() => {
+        fetchContent('footer');
+    }, [language]);
 
     const handleLogout = () => {
     };
@@ -21,9 +27,9 @@ export default function Layout({ children }) {
                     <p> 123 Fakturera</p>
                     
                     <ul>
-                        <li>Home</li>
-                        <li>Order</li>
-                        <li>Contact us</li>
+                        <li>{content?.footer?.home || 'Home'}</li>
+                        <li>{content?.footer?.order || 'Order'}</li>
+                        <li>{content?.footer?.contact || 'Contact us'}</li>
                         
                     </ul>
 
