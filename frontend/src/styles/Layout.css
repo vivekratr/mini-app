@@ -1,6 +1,7 @@
 /* for footer */
 .footer{
     position: relative;
+    margin-top:3rem;
 }
 .footer-section{
     display: flex;

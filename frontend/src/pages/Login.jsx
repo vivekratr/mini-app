@@ -5,6 +5,7 @@ import { useContentStore } from "../stores/contentStore.js";
 import { useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../stores/authStores.js';
 import Footer from "../components/Footer.jsx";
+import Navbar from "../components/Navbar.jsx";
 
 const validateEmailFormat = (value) => {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
@@ -73,6 +74,9 @@ const Login = () => {
   const handlePasswordFocus = () => setPasswordError("");
 
   return (
+    <div className="login-main-container main-container1">
+      <Navbar />
+
     <div className="login-container">
       <h1 className="login-head">{content?.login?.title || 'Log in'}
         {error && (
@@ -140,7 +144,9 @@ const Login = () => {
         <label>{content?.login?.forget || 'Forgotten password?'}</label>
       </div>
 
-      <Footer/>
+      </div>
+      <Footer />
+
     </div>
   );
 };

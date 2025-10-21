@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useContentStore } from "../stores/contentStore.js";
 import { useNavigate } from 'react-router-dom';
 import "../styles/Terms.css"
+import Navbar from '../components/Navbar.jsx';
 
 
 const Terms = () => {
@@ -13,7 +14,8 @@ const Terms = () => {
             fetchContent("terms");
     }, [language])
   return (
-    <div className='terms'>
+    <div className='terms main-container1'>
+      <Navbar/>
       <h1 className='title'>{content?.terms?.title || 'Terms'}</h1>
 
       <button onClick={() => navigate(-1)} className='back-button'>{content?.terms?.buttonText || 'Close and Go Back'}</button>

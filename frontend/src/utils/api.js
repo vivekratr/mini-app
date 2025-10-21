@@ -87,4 +87,13 @@ export const contentAPI = {
         });
         return response.data;
     },
+};
+  
+export const pricelistAPI = {
+    getProducts: async () => {
+        const response = await api.get('/products');
+        // console.log("response",response.data);
+        return response.data;
+    },
+
   };
