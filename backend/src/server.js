@@ -20,9 +20,9 @@ app.get('/api/status', (req, res) => {
 
 app.use('/api/auth', authRouter);
 app.use('/api/content', contentRouter);
-app.use('/api/products',productRouter)
+app.use('/api/products', productRouter)
 
- 
+
 app.listen((PORT), () => {
     console.log(`Server is running on port ${PORT}`);
 });
