@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from "react";
 import "../styles/Login.css";
 import { Eye, EyeOff } from "lucide-react";
-import { useContentStore } from "../stores/contentStore";
+import { useContentStore } from "../stores/contentStore.js";
+import { useNavigate } from 'react-router-dom';
+import { useAuthStore } from '../stores/authStores.js';
 
 const validateEmailFormat = (value) => {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 };
 
 const Login = () => {
-      const { language, fetchContent, content } = useContentStore();
+  const { language, fetchContent, content } = useContentStore();
+  const navigate = useNavigate();
+  const { login, loading, error, isAuthenticated } = useAuthStore();
   
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
@@ -18,10 +22,22 @@ const Login = () => {
 
   useEffect(() => {
           fetchContent("login");
-      }, [language])
+  }, [language])
+  
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/pricelist', { replace: true });
+      console.log("authenticated");
+    }
+  }, [isAuthenticated, navigate]);
 
-  const handleSubmit = (e) => {
+ 
+
+  
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
     setEmailError("");
     setPasswordError("");
 
@@ -40,9 +56,16 @@ const Login = () => {
       valid = false;
     }
 
-    if (!valid) return;
+    if (!valid) {
+      return; 
+    }
 
-    console.log("submitted:", { email, password });
+    try {
+      await login(email, password);
+    } catch (err) {
+      console.error('Login error:', err);
+  
+    }
   };
 
   const handleEmailFocus = () => setEmailError("");
@@ -50,9 +73,14 @@ const Login = () => {
 
   return (
     <div className="login-container">
-      <h1 className="login-head">{content?.login?.title || 'Log in'}</h1>
+      <h1 className="login-head">{content?.login?.title || 'Log in'}
+        {error && (
+          <p className="error-text" role="alert" style={{ marginBottom: '1rem' }}>
+            {error}
+          </p>)}
+      </h1>
 
-      <form className="form-container" onSubmit={handleSubmit} noValidate>
+      <form noValidate autoComplete="off" className="form-container" onSubmit={handleSubmit} >
         <label htmlFor="email">{content?.login?.username || 'Enter your email address'}</label>
         <div className="password-container">
           <input
@@ -101,8 +129,8 @@ const Login = () => {
           </p>
         )}
 
-        <button className="submit" type="submit">
-          {content?.login?.submit || 'Log in'}
+        <button className="submit" type="submit" disabled={loading}>
+          {loading ? 'Loading...' : (content?.login?.submit || 'Log in')}
         </button>
       </form>
 

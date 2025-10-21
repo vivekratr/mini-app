@@ -22,7 +22,7 @@ export default function Layout({ children }) {
                 {children}
             </main>
 
-            <footer novalidate aria-autocomplete="off" className="footer">
+            <footer  className="footer">
                 <div className="footer-section" style={{ borderBottom: '1px solid white'}}>
                     <p> 123 Fakturera</p>
                     

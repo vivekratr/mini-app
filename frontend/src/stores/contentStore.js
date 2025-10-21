@@ -22,9 +22,9 @@ export const useContentStore = create((set, get) => ({
         try {
             const language = get().language;
             const data = await contentAPI.getContent(page, language);
-            console.log('====================================');
-            console.log("fetched content",data);
-            console.log('====================================');
+            // console.log('====================================');
+            // console.log("fetched content",data);
+            // console.log('====================================');
             set((state) => ({
                 content: {
                     ...state.content,
@@ -33,9 +33,9 @@ export const useContentStore = create((set, get) => ({
                 loading: false,
             }));
 
-            console.log('====================================');
-            console.log("fetched content",get().content);
-            console.log('====================================');
+            // console.log('====================================');
+            // console.log("fetched content",get().content);
+            // console.log('====================================');
             return data.content;
         } catch (error) {
             const errorMessage = error.response?.data?.error || 'Failed to fetch content from server';

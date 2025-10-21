@@ -54,7 +54,8 @@ api.interceptors.response.use(
     (error) => {
         if (error.response?.status === 401 || error.response?.status === 403) {
             localStorage.removeItem('fakturera_token');
-            window.location.href = '/';
+            // window.location.href = '/';
+            console.log("error",error.response)
         }
         return Promise.reject(error);
     }
