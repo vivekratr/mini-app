@@ -155,7 +155,7 @@
     transform: translateY(-9.5px) rotate(-45deg);
 }
 
-@media (max-width: 968px) {
+@media (max-width: 1030px) {
     .navbar-container {
         padding: 20px;
         width: 85%;

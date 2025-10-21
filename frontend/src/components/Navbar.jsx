@@ -95,7 +95,7 @@ const Navbar = () => {
                             {content?.navbar?.['about-us'] || 'About us'}
                         </NavLink>
                         <NavLink
-                            to="/term"
+                            to="/terms"
                             className="white-text"
                         >
                             {content?.navbar?.terms || 'Terms'}
@@ -167,7 +167,7 @@ const Navbar = () => {
                 </div>
             </nav>
 
-            {/* Mobile Menu Dropdown */}
+            {/* mobile menu  */}
             <div className={`navbar-mobile-dropdown ${mobileMenuOpen ? 'navbar-mobile-dropdown-active' : ''}`}>
                 <div className="navbar-mobile-links">
                     <NavLink

@@ -4,6 +4,7 @@ import { Eye, EyeOff } from "lucide-react";
 import { useContentStore } from "../stores/contentStore.js";
 import { useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../stores/authStores.js';
+import Footer from "../components/Footer.jsx";
 
 const validateEmailFormat = (value) => {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
@@ -138,6 +139,8 @@ const Login = () => {
         <label>{content?.login?.register || 'Register'}</label>
         <label>{content?.login?.forget || 'Forgotten password?'}</label>
       </div>
+
+      <Footer/>
     </div>
   );
 };
