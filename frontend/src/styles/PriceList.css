@@ -122,7 +122,9 @@
   }
   .flex{
     display: flex;
-    gap:40px
+    gap:40px;
+    justify-content:space-between;
+    align-items: start;
   }
 
   .pl-main-content {
@@ -137,8 +139,8 @@
     padding: 15px;
     margin-bottom: 15px;
     border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    width: 400px;
+    /* box-shadow: 0 1px 3px rgba(0,0,0,0.1); */
+    width: 350px;
   }
 
   .pl-search-input-wrapper {
@@ -150,7 +152,7 @@
     width: 100%;
     padding: 10px 40px 10px 15px;
     border: 1px solid #e0e0e0;
-    border-radius: 6px;
+    border-radius: 18px;
     font-size: 14px;
     box-sizing: border-box;
   }
@@ -171,18 +173,19 @@
   }
 
   .pl-btn {
-    padding: 8px 16px;
+    padding: 4px 4px;
     border: none;
-    border-radius: 6px;
+    border-radius: 18px;
     cursor: pointer;
     font-size: 14px;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 6px;
     transition: all 0.2s;
-    height: 40px;
-    margin-top: auto;
-    margin-bottom: auto;
+    height: 30px;
+   
+  
     min-width: 140px;
     align-items: center;
     text-align: center;
@@ -191,6 +194,9 @@
   .pl-btn-primary {
     background: #26c6da;
     color: white;
+  }
+  span ,.pl-btn-text{
+    color: black !important;
   }
 
   .pl-btn-primary:hover {
@@ -220,7 +226,6 @@
     width: 100%;
     border-collapse: collapse;
     min-width: 800px;
-    text-align: center;
 
 
   }
@@ -230,9 +235,7 @@
     position: sticky;
     top: 0;
     z-index: 10;
-    text-align: center;
 
-width: 100%;
   }
 
   .pl-table th, .pl-table td {
@@ -243,12 +246,6 @@ width: 100%;
 
   }
 
-  td{
-    color: black !important;
-    text-align: center;
-
-
-  }
 
   .pl-sortable-header {
     cursor: pointer;
@@ -257,7 +254,6 @@ width: 100%;
     align-items: center;
     gap: 4px;
     color: black !important;
-    text-align: center;
 
   }
 
@@ -310,6 +306,9 @@ width: 100%;
     .pl-main-content {
       margin-left: 0;
     }
+    .pl-btn-text{
+      display: none;
+    }
 
     .pl-user-details {
       display: none;
@@ -327,6 +326,13 @@ width: 100%;
     .pl-header {
       padding: 12px 15px;
     }
+    .pl-btn-text{
+      display: none;
+    }
+    .flex{
+      flex-direction: column;
+      gap: 0%;
+    }
 
     .pl-avatar {
       width: 35px;
@@ -340,15 +346,20 @@ width: 100%;
 
     .pl-search-bar {
       padding: 12px;
+      width: 100%;
     }
 
     .pl-toolbar {
       gap: 8px;
+      width: 100%;
+      justify-content: space-between;
     }
 
     .pl-btn {
       padding: 6px 12px;
       font-size: 13px;
+      width: 20vw;
+      height: 45px;
     }
 
     .pl-table th, .pl-table td {
@@ -366,26 +377,39 @@ width: 100%;
   }
 
   @media (max-width: 480px) {
+
+    .flex{
+      flex-direction: column;
+      gap: 1px;
+    }
     .pl-header {
       padding: 10px 12px;
     }
 
+    .pl-btn-text{
+      display: none;
+    }
     .pl-main-content {
       padding: 10px;
     }
 
     .pl-search-bar {
       padding: 10px;
+      width: 100%;
     }
 
     .pl-btn {
       padding: 6px 10px;
       font-size: 12px;
       gap: 4px;
+      height: 40px;
+      min-width: 25vw;
     }
 
     .pl-toolbar {
       gap: 6px;
+      width: 100%;
+      justify-content: space-between;
     }
 
     .pl-lang-selector {
@@ -401,6 +425,9 @@ width: 100%;
     .pl-header {
       padding: 10px 12px;
     }
+    .pl-btn-text{
+      display: none;
+    }
 
     .pl-main-content {
       padding: 10px;
@@ -411,13 +438,28 @@ width: 100%;
     }
 
     .pl-btn {
-      padding: 6px 10px;
+      padding: 6px 4px;
       font-size: 12px;
       gap: 4px;
+      width: min-content;
     }
 
     .pl-toolbar {
       gap: 6px;
+      flex-direction: row;
+      width: 100%;
+      position: flex;
+      justify-content: space-between;
+      
+
+    }
+    button.pl-btn.pl-btn-secondary {
+      padding: 0px;
+      padding-left: 0%;
+      padding-right: 0%;
+      width: 10px;     
+      height: 40px;
+      min-width: 25vw;
     }
 
     .pl-lang-selector {
@@ -427,4 +469,8 @@ width: 100%;
     .pl-table-container {
       max-height: 60vh;
     }
-  }
+    .flex{
+      flex-direction: column;
+      gap: 5px;
+    
+  }}

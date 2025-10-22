@@ -259,14 +259,24 @@ const PriceList = () => {
             </div>
 
             <div className="pl-toolbar">
-              <button className="pl-btn pl-btn-primary">
-                <Plus size={18} /> New Product
+              <button className="pl-btn pl-btn-secondary">
+                <span className='pl-btn-text'>
+                  New Product 
+                </span>
+               <Plus style={{maxWidth:'20px'}} size={18} /> 
               </button>
               <button className="pl-btn pl-btn-secondary">
-                <Printer size={18} /> Print List
+                <span className='pl-btn-text'>
+                  Print List
+                </span>
+                
+                <Printer size={18} /> 
               </button>
               <button className="pl-btn pl-btn-secondary" onClick={() => setColumnSelectorOpen(true)}>
-                <MoreVertical size={18} /> Advanced mode
+                <span className='pl-btn-text'>
+                  Advanced mode
+                </span>
+                <MoreVertical size={18} /> 
               </button>
             </div>
           </div>
