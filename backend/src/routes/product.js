@@ -14,7 +14,7 @@ productRouter.get("/", authenticateToken, async (req, res) => {
     }
 })
 
-router.get('/:id', async (req, res) => {
+productRouter.get('/:id',authenticateToken, async (req, res) => {
     try {
         const { id } = req.params;
 
