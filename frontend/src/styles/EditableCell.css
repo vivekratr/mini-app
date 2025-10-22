@@ -5,11 +5,16 @@
     cursor: pointer;
     transition: all 0.2s ease;
     border-radius: 4px;
+    color: black !important;
+
   }
   
   .editable-cell:hover:not(.editing) {
     background-color: #f8f9fa;
     box-shadow: inset 0 0 0 1px #dee2e6;
+    color: black !important;
+    border-radius: 12px;
+
   }
   
   .editable-cell.editing {
@@ -25,8 +30,12 @@
   .cell-value {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 6px;
     width: 100%;
+    color: black !important;
+    text-align: center;
+
   }
   
   .saving-indicator {
@@ -44,18 +53,21 @@
   }
   
   .editable-input {
-    width: 100%;
+    width: 70%;
     padding: 8px;
-    border: 2px solid #0d6efd;
+    /* border: 2px solid #0d6efd; */
     border-radius: 4px;
     font-size: 14px;
     outline: none;
     font-family: inherit;
     background-color: #fff;
+    text-align: center;
+    padding-left: auto;
+    padding-right: auto;
   }
   
   .editable-input:focus {
-    border-color: #0a58ca;
+    /* border-color: #0a58ca; */
     box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.25);
   }
   
@@ -69,15 +81,16 @@
   }
   
   .pl-table td .editable-cell {
-    min-width: 100px;
+    min-width: fit-content;
   }
   
   .pl-table td .editable-cell.editing {
-    min-width: 120px;
+    min-width:fit-content;
   }
   
   input[type="number"].editable-input {
-    text-align: right;
+    text-align: center;
+    width: fit-content;
   }
   
   input[type="number"].editable-input::-webkit-inner-spin-button,
@@ -102,14 +115,7 @@
     transition: all 0.2s;
   }
   
-  .pl-btn-delete:hover {
-    background-color: #ffebee;
-    transform: scale(1.1);
-  }
   
-  .pl-btn-delete:active {
-    transform: scale(0.95);
-  }
   
   @media (max-width: 768px) {
     .editable-cell {

@@ -30,7 +30,6 @@ const EditableCell = ({
         setLocalValue(value);
     }, [value]);
 
-    //auto-focus input when editing a field
     useEffect(() => {
         if (isEditing && inputRef.current) {
             inputRef.current.focus();
@@ -110,7 +109,6 @@ const EditableCell = ({
                 {isSaving ? (
                     <>
                         {value}
-                        <span className="saving-indicator">💾</span>
                     </>
                 ) : (
                     value || '-'
