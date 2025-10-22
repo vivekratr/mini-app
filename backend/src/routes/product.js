@@ -19,7 +19,7 @@ productRouter.get('/:id',authenticateToken, async (req, res) => {
         const { id } = req.params;
 
         const result = await query(
-            'SELECT id, name, in_price, price, description, created_at, updated_at FROM products WHERE id = $1',
+            'SELECT * FROM products WHERE id = $1',
             [id]
         );
 
@@ -51,9 +51,9 @@ productRouter.put('/:id',authenticateToken, async (req, res) => {
         let paramCount = 1;
 
         if (name !== undefined) {
-            updates.push(`name = $${paramCount++}`);
+            updates.push(`"product/service" = $${paramCount++}`);
             values.push(name);
-        }
+        } 
         if (in_price !== undefined) {
             updates.push(`in_price = $${paramCount++}`);
             values.push(parseFloat(in_price) || 0);
@@ -82,12 +82,14 @@ productRouter.put('/:id',authenticateToken, async (req, res) => {
         updates.push('updated_at = CURRENT_TIMESTAMP');
 
         values.push(id);
+        console.log("values", values)
+        console.log("updates", updates)
 
         const result = await query(
             `UPDATE products 
          SET ${updates.join(', ')}
          WHERE id = $${paramCount}
-         RETURNING id, name, in_price, price, description, article_no, unit, in_stock, updated_at`,
+         RETURNING id, "product/service", in_price, price, description, article_no, unit, in_stock, updated_at`,
             values
         );
 
