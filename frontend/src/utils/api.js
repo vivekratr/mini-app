@@ -95,6 +95,9 @@ export const pricelistAPI = {
         // console.log("response",response.data);
         return response.data;
     },
-    
+    updateProduct: async (id,product) => {
+        const response = await api.put(`/products/${id}`,product)
+        return response.data;
+    }
 
   };

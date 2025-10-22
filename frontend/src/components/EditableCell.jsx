@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect, useRef } from 'react';
-import { usePricelistStore } from '../stores/pricelistStore';
+import { usePricelistStore } from '../stores/priceListStores.js';
 import "../styles/EditableCell.css";
 
 const EditableCell = ({

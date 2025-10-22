@@ -54,12 +54,12 @@ export const usePricelistStore = create((set,get) => ({
 
             await pricelistAPI.updateProduct(productId, {
                 name: updatedProduct['product/service'],
-                in_price: parseFloat(updatedProduct.in_price) || 0,
-                price: parseFloat(updatedProduct.price) || 0,
-                description: updatedProduct.description || '',
+                in_price: parseFloat(updatedProduct.in_price) ,
+                price: parseFloat(updatedProduct.price) ,
+                description: updatedProduct.description ,
                 article_no: updatedProduct.article_no,
                 unit: updatedProduct.unit,
-                in_stock: parseInt(updatedProduct.in_stock) || 0,
+                in_stock: parseInt(updatedProduct.in_stock),
             });
 
             set({ savingCell: null, editingCell: null });
