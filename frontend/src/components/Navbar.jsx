@@ -199,7 +199,7 @@ const Navbar = () => {
                         {content?.navbar?.['about-us'] || 'Om oss'}
                     </NavLink>
                     <NavLink
-                        to="/term"
+                        to="/terms"
                         className="navbar-mobile-link"
                         onClick={closeMobileMenu}
                     >

@@ -95,5 +95,6 @@ export const pricelistAPI = {
         // console.log("response",response.data);
         return response.data;
     },
+    
 
   };

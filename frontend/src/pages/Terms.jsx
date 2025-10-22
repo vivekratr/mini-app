@@ -14,7 +14,8 @@ const Terms = () => {
             fetchContent("terms");
     }, [language])
   return (
-    <div className='terms main-container1'>
+    <div className='main-container1'>
+    <div className='terms main-container'>
       <Navbar/>
       <h1 className='title'>{content?.terms?.title || 'Terms'}</h1>
 
@@ -29,6 +30,8 @@ const Terms = () => {
 
       
     </div>
+    </div>
+
   )
 }
 

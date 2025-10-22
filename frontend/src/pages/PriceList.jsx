@@ -4,10 +4,12 @@ import { usePricelistStore } from '../stores/priceListStores';
 import { useContentStore } from '../stores/contentStore';
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 import "../styles/PriceList.css";
+import EditableCell from '../components/EditableCell';
 
 
 const PriceList = () => {
   const { products, loading, fetchProducts } = usePricelistStore();
+  
   const { language, setLanguage } = useContentStore();
 
 
@@ -113,6 +115,16 @@ const PriceList = () => {
     unit: 'Unit',
     in_stock: 'In Stock',
     description: 'Description'
+  };
+
+  const editableColumns = {
+    article_no: { editable: true, type: 'text' },
+    'product/service': { editable: true, type: 'text' },
+    in_price: { editable: true, type: 'number' },
+    price: { editable: true, type: 'number' },
+    unit: { editable: true, type: 'text' },
+    in_stock: { editable: true, type: 'number' },
+    description: { editable: true, type: 'text' }
   };
 
   const SortIcon = ({ field }) => {
@@ -283,10 +295,23 @@ const PriceList = () => {
                 <tbody>
                   {sortedProducts?.map((product) => (
                     <tr key={product.id}>
-                      {Object.keys(columnLabels).map(
-                        (col) => visibleColumns[col] && <td key={col}>{product[col]}</td>
+                      {Object.keys(columnLabels).map((col) =>
+                        visibleColumns[col] ? (
+                          <td key={col}>
+                            {editableColumns[col]?.editable ? (
+                              <EditableCell
+                                productId={product.id}
+                                field={col}
+                                value={product[col]}
+                                type={editableColumns[col].type}
+                              />
+                            ) : (
+                              product[col]
+                            )}
+                          </td>
+                        ) : null
                       )}
-
+                    
                     </tr>
                   ))}
                 </tbody>

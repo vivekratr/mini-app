@@ -1,0 +1,123 @@
+.editable-cell {
+    position: relative;
+    min-height: 32px;
+    padding: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-radius: 4px;
+  }
+  
+  .editable-cell:hover:not(.editing) {
+    background-color: #f8f9fa;
+    box-shadow: inset 0 0 0 1px #dee2e6;
+  }
+  
+  .editable-cell.editing {
+    padding: 0;
+    background-color: #fff;
+  }
+  
+  .editable-cell.saving {
+    background-color: #fff3cd;
+    position: relative;
+  }
+  
+  .cell-value {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    width: 100%;
+  }
+  
+  .saving-indicator {
+    font-size: 14px;
+    animation: pulse 1s ease-in-out infinite;
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+  
+  .editable-input {
+    width: 100%;
+    padding: 8px;
+    border: 2px solid #0d6efd;
+    border-radius: 4px;
+    font-size: 14px;
+    outline: none;
+    font-family: inherit;
+    background-color: #fff;
+  }
+  
+  .editable-input:focus {
+    border-color: #0a58ca;
+    box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.25);
+  }
+  
+  .cell-error {
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    color: #dc3545;
+    font-size: 11px;
+    font-weight: 500;
+  }
+  
+  .pl-table td .editable-cell {
+    min-width: 100px;
+  }
+  
+  .pl-table td .editable-cell.editing {
+    min-width: 120px;
+  }
+  
+  input[type="number"].editable-input {
+    text-align: right;
+  }
+  
+  input[type="number"].editable-input::-webkit-inner-spin-button,
+  input[type="number"].editable-input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+  input[type="number"].editable-input {
+    -moz-appearance: textfield;
+    -webkit-appearance: textfield;
+    appearance: textfield;
+  }
+  
+  .pl-btn-delete {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: all 0.2s;
+  }
+  
+  .pl-btn-delete:hover {
+    background-color: #ffebee;
+    transform: scale(1.1);
+  }
+  
+  .pl-btn-delete:active {
+    transform: scale(0.95);
+  }
+  
+  @media (max-width: 768px) {
+    .editable-cell {
+      min-height: 40px;
+      padding: 10px 6px;
+    }
+    
+    .editable-input {
+      font-size: 16px; 
+    }
+  }
