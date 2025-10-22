@@ -14,6 +14,27 @@ productRouter.get("/", authenticateToken, async (req, res) => {
     }
 })
 
+router.get('/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        const result = await query(
+            'SELECT id, name, in_price, price, description, created_at, updated_at FROM products WHERE id = $1',
+            [id]
+        );
+
+        if (result.rows.length === 0) {
+            return res.status(404).json({ error: 'product not found' });
+        }
+
+        res.json({ product: result.rows[0] });
+
+    } catch (error) {
+        console.error('Product fetch error:', error);
+        res.status(500).json({ error: 'internal server error' });
+    }
+});
+
 
 productRouter.put('/:id',authenticateToken, async (req, res) => {
     try {
