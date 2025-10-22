@@ -191,10 +191,11 @@
 @media (max-width: 480px) {
     .navbar-container {
         padding: 15px;
-        width: 85%;
+        width: 100%;
         padding-top: 46px;
         font-weight: 600;
     font-family: 'Open Sans', sans-serif;
+    margin-bottom: 25px;
 
     }
 

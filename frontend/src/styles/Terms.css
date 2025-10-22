@@ -74,9 +74,9 @@
     white-space: pre-line;
 }
 
-span{
+span#t-blueText{
     cursor: pointer;
-    color: blue;
+    color: blue !important;
 }
 
 
