@@ -4,12 +4,21 @@
   box-sizing: border-box;
 }
 
-.main-container1{
-  background-image: url("https://storage.123fakturera.se/public/wallpapers/sverige43.jpg");
-  background-position: top;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
+.main-container1 {
+  position: relative;
+  overflow: hidden;
+}
+
+.main-container1::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  min-height: 100vh;
+  height: 100%;
+  background-image: url("https://storage.123fakturera.se/public/wallpapers/sverige43.jpg");
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  transform: translateZ(0); 
 }
