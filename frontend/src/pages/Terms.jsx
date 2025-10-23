@@ -23,7 +23,7 @@ const Terms = () => {
       <button onClick={() => navigate(-1)} className='back-button'>{content?.terms?.buttonText || 'Close and Go Back'}</button>
 
       <div className='desc'>
-        <p className='text1'><b>{content?.terms?.text1 || 'BY'}</b> {content?.terms?.text2 || ''}<span id='t-blueText'>{content?.terms?.text3 || ''}</span> {content?.terms?.text4 || ''}</p>
+        <p className='text1'><b>{content?.terms?.text1 || 'Loading ...'}</b> {content?.terms?.text2 || ''}<span id='t-blueText'>{content?.terms?.text3 || ''}</span> {content?.terms?.text4 || ''}</p>
         
       </div>
 

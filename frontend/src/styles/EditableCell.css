@@ -1,129 +1,141 @@
 .editable-cell {
-    position: relative;
-    min-height: 32px;
-    padding: 8px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    border-radius: 4px;
-    color: black !important;
+  position: relative;
+  min-height: 32px;
+  padding: 4px 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 18px;
+  color: black !important;
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  overflow: hidden;
+}
 
-  }
-  
-  .editable-cell:hover:not(.editing) {
-    background-color: #f8f9fa;
-    box-shadow: inset 0 0 0 1px #dee2e6;
-    color: black !important;
-    border-radius: 12px;
+.editable-cell:hover:not(.editing) {
+  /* background-color: #f8f9fa; */
+  z-index: 0;
+  /* box-shadow: inset 0 0 0 1px #dee2e6; */
+  color: black !important;
+  /* border-radius: 12px; */
+  border-radius: 4px;
+  max-height: inherit;
+}
 
-  }
-  
-  .editable-cell.editing {
-    padding: 0;
-    background-color: #fff;
-  }
-  
-  .editable-cell.saving {
-    background-color: #fff3cd;
-    position: relative;
-  }
-  
-  .cell-value {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    width: 100%;
-    color: black !important;
-    text-align: center;
+.editable-cell.editing {
+  padding: 0px;
+  background-color: #fff;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+}
 
+.editable-cell.saving {
+  background-color: #fff3cd;
+  position: relative;
+}
+
+.cell-value {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  color: black !important;
+  text-align: center;
+  width: 100%;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.saving-indicator {
+  font-size: 14px;
+  animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
   }
-  
-  .saving-indicator {
-    font-size: 14px;
-    animation: pulse 1s ease-in-out infinite;
+  50% {
+    opacity: 0.5;
   }
-  
-  @keyframes pulse {
-    0%, 100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0.5;
-    }
+}
+
+.editable-input {
+  max-width: 80%;
+  border: none;
+  /* border: 2px solid #0d6efd; */
+  font-size: 14px;
+  outline: none;
+  font-family: inherit;
+  background-color: #fff;
+  text-align: center;
+}
+
+.editable-input:focus {
+  /* border-color: #0a58ca; */
+  /* box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.25); */
+}
+
+.cell-error {
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  color: #dc3545;
+  font-size: 11px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.pl-table td .editable-cell {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.pl-table td .editable-cell.editing {
+  min-width: 0;
+  max-width: 100%;
+}
+
+input[type="number"].editable-input {
+  text-align: center;
+  width: 100%;
+}
+
+input[type="number"].editable-input::-webkit-inner-spin-button,
+input[type="number"].editable-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"].editable-input {
+  -moz-appearance: textfield;
+  -webkit-appearance: textfield;
+  appearance: textfield;
+}
+
+.pl-btn-delete {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+@media (max-width: 768px) {
+  .editable-cell {
+    min-height: 40px;
+    padding: 10px 6px;
   }
-  
+ 
   .editable-input {
-    width: 70%;
-    padding: 8px;
-    /* border: 2px solid #0d6efd; */
-    border-radius: 4px;
-    font-size: 14px;
-    outline: none;
-    font-family: inherit;
-    background-color: #fff;
-    text-align: center;
-    padding-left: auto;
-    padding-right: auto;
-  }
-  
-  .editable-input:focus {
-    /* border-color: #0a58ca; */
-    box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.25);
-  }
-  
-  .cell-error {
-    position: absolute;
-    bottom: -20px;
-    left: 0;
-    color: #dc3545;
     font-size: 11px;
-    font-weight: 500;
   }
-  
-  .pl-table td .editable-cell {
-    min-width: fit-content;
-  }
-  
-  .pl-table td .editable-cell.editing {
-    min-width:fit-content;
-  }
-  
-  input[type="number"].editable-input {
-    text-align: center;
-    width: fit-content;
-  }
-  
-  input[type="number"].editable-input::-webkit-inner-spin-button,
-  input[type="number"].editable-input::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-  
-  input[type="number"].editable-input {
-    -moz-appearance: textfield;
-    -webkit-appearance: textfield;
-    appearance: textfield;
-  }
-  
-  .pl-btn-delete {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 18px;
-    padding: 4px 8px;
-    border-radius: 4px;
-    transition: all 0.2s;
-  }
-  
-  
-  
-  @media (max-width: 768px) {
-    .editable-cell {
-      min-height: 40px;
-      padding: 10px 6px;
-    }
-    
-    .editable-input {
-      font-size: 16px; 
-    }
-  }
+}

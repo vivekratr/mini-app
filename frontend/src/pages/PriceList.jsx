@@ -1,22 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import { Search, Plus, Printer, MoreVertical, MenuIcon, ChevronUp, ChevronDown } from 'lucide-react';
+import {ArrowRightIcon, Search,Ellipsis, Plus, Printer, MoreVertical, MenuIcon, ChevronUp, ChevronDown } from 'lucide-react';
 import { usePricelistStore } from '../stores/priceListStores';
 import { useContentStore } from '../stores/contentStore';
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 import "../styles/PriceList.css";
 import EditableCell from '../components/EditableCell';
 
-
 const PriceList = () => {
   const { products, loading, fetchProducts } = usePricelistStore();
   
   const { language, setLanguage } = useContentStore();
+  const [screenSize, setScreenSize] = useState('desktop');
 
 
   const [searchArticle, setSearchArticle] = useState('');
   const [searchProduct, setSearchProduct] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
   const [columnSelectorOpen, setColumnSelectorOpen] = useState(false);
+  const [activeRow,setActiveRow] = useState(0)
   const [sortConfig, setSortConfig] = useState({ field: null, direction: null });
   const [visibleColumns, setVisibleColumns] = useState({
     article_no: true,
@@ -133,10 +134,45 @@ const PriceList = () => {
       ? <ChevronUp size={16} />
       : <ChevronDown size={16} />;
   };
+
+  const getResponsiveColumns = () => {
+    const allColumns = ['article_no', 'product/service', 'in_price', 'price', 'unit', 'in_stock', 'description'];
+    
+    if (screenSize === 'desktop') {
+      return allColumns.filter(col => visibleColumns[col]);
+    } else if (screenSize === 'tablet') {
+      return allColumns.filter(col => {
+        if(col === 'product/service' || col === 'price'|| col==='article_no' || col==='in_stock' || col ==='unit') return visibleColumns[col]
+      });
+    } else {
+      return allColumns.filter(col =>{
+        if(col === 'product/service' || col === 'price') return visibleColumns[col]
+      });
+    }
+  };
+  
   useEffect(() => {
     fetchProducts();
 
   }, []);
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      if (width >= 1024) {
+        setScreenSize('desktop');
+      } else if (width >= 768) {
+        setScreenSize('tablet');
+      } else {
+        setScreenSize('mobile');
+      }
+    };
+  
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  const responsiveColumns = getResponsiveColumns();
+
   return (
     <div>
       <div className="pricelist-container">
@@ -272,7 +308,7 @@ const PriceList = () => {
                 
                 <Printer size={18} /> 
               </button>
-              <button className="pl-btn pl-btn-secondary" onClick={() => setColumnSelectorOpen(true)}>
+              <button className="pl-btn pl-btn-secondary" onClick={() => setColumnSelectorOpen(false)}>
                 <span className='pl-btn-text'>
                   Advanced mode
                 </span>
@@ -287,7 +323,7 @@ const PriceList = () => {
               <table className="pl-table">
                 <thead>
                   <tr>
-                    {Object.keys(columnLabels).map((col) =>
+                    {responsiveColumns.map((col) =>
                       visibleColumns[col] ? (
                         <th key={col}>
                           <span
@@ -303,11 +339,13 @@ const PriceList = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {sortedProducts?.map((product) => (
-                    <tr key={product.id}>
-                      {Object.keys(columnLabels).map((col) =>
+                    {sortedProducts?.map((product,index) => (
+                      <tr onClick={()=>setActiveRow(index)} key={product.id}>
+                      {responsiveColumns.map((col) =>
                         visibleColumns[col] ? (
                           <td key={col}>
+                            { activeRow ===index && <div className='pl-active-row'
+                            key={product.id}> <ArrowRightIcon size={18}/></div>}
                             {editableColumns[col]?.editable ? (
                               <EditableCell
                                 productId={product.id}
@@ -321,6 +359,19 @@ const PriceList = () => {
                           </td>
                         ) : null
                       )}
+                        <div
+  className="pr-ellipsis"
+  style={{
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    cursor:"pointer",
+    marginTop:"0.4rem",
+    width: "auto", lineHeight: 0 ,height:'auto'
+  }}
+>
+  <Ellipsis position={'center'} size={18} />
+</div>
                     
                     </tr>
                   ))}
